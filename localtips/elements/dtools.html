@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Disk and Drive tools</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <style>
             body {
                 font-family: Arial, Helvetica, sans-serif;
@@ -57,15 +58,45 @@
                 margin-left: auto;
                 margin-right: auto;
             }
+            #moveTop {
+                display: none;
+                z-index: 10;
+                color: white;
+                position: fixed;
+                top: 90vh;
+                left: 5vw;
+                width: 100px;
+                height: 20px;
+                border-radius: 16px;
+                padding: 5px;
+                font-weight: bold;
+                text-align: center;
+                cursor: pointer;
+                background-color: rgba(255,0,0,0.4);
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+            }
         </style>
+        <script type="text/javascript">
+            const move_top = () => {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+            const page_scroll = () => {
+                if(document.body.scrollTop > 0 || document.documentElement.scrollTop > 0)
+                    document.getElementById('moveTop').style.display = 'block';
+                else document.getElementById('moveTop').style.display = 'none';
+            }
+        </script>
     </head>
-    <body>
+    <body onscroll="page_scroll()">
+        <div id="moveTop" onclick="move_top()">TOP</div>
         <h1>DISK AND DRIVE TOOLS</h1>
-        <h2>FIX MBR</h2>
+        <h2 id="fixmbr">FIX MBR</h2>
 
-        <h2>SHADOW DEFENDER</h2>
+        <h2 id="shadowdef">SHADOW DEFENDER</h2>
         
-        <h2>NTFS DRIVE PROTECTION</h2>
+        <h2 id="drivepro">NTFS DRIVE PROTECTION</h2>
         <p>NTFS Drive Protection dùng để khóa, chống việc ghi trực tiếp file lên <b>các partition có định dạng NTFS</b>. Tải NTFS Drive Protection tại 
         <a href="https://www.sordum.org/downloads/?ntfs-drive-protection">Trang chủ</a> hoặc 
         Google Drive</p>
